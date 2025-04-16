@@ -1,0 +1,22 @@
+Wed, Apr 16, 2025  4:51:49 PM: 
+ hashmap.c | 135 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 126 insertions(+), 9 deletions(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'insertMap':
+hashmap.c:69:20: error: 'return' with a value, in function returning void [-Werror]
+             return 0 ;
+                    ^
+hashmap.c:52:6: note: declared here
+ void insertMap(HashMap * map, char * key, void * value)
+      ^~~~~~~~~
+In file included from test.c:4:0:
+hashmap.c: In function 'searchMap':
+hashmap.c:154:9: error: 'return' with no value, in function returning non-void [-Werror]
+         return ;
+         ^~~~~~
+hashmap.c:151:8: note: declared here
+ Pair * searchMap(HashMap * map,  char * key)
+        ^~~~~~~~~
+cc1.exe: all warnings being treated as errors
+eeef3b7
