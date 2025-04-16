@@ -66,7 +66,7 @@ void insertMap(HashMap * map, char * key, void * value)
         indice = (indice + 1) % map->capacity ;
 
         if (!first && indice == indice_original) // Si damos la vuelta, salimos
-            return 0 ;
+            break ;
         
         first = 0 ;
     }
@@ -136,7 +136,7 @@ invalídelo asignando NULL a la clave (pair->key=NULL). Recuerde actualizar la v
 void eraseMap(HashMap * map,  char * key) 
 {    
 
-
+    return NULL ;
 }
 
 /*
@@ -151,7 +151,7 @@ c) Si llega a una casilla nula, retorne NULL inmediatamente (no siga avanzando, 
 Pair * searchMap(HashMap * map,  char * key) 
 {   
     if (map == NULL || key == NULL)
-        return ;
+        return 0 ;
     
     long indice = hash(key, map->capacity) ;
     long indice_original = indice ;

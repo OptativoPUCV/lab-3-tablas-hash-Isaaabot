@@ -20,3 +20,17 @@ hashmap.c:151:8: note: declared here
         ^~~~~~~~~
 cc1.exe: all warnings being treated as errors
 eeef3b7
+Wed, Apr 16, 2025  4:54:50 PM: 
+ hashmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'eraseMap':
+hashmap.c:139:12: error: 'return' with a value, in function returning void [-Werror]
+     return NULL ;
+            ^~~~
+hashmap.c:136:6: note: declared here
+ void eraseMap(HashMap * map,  char * key)
+      ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+5e2e0cc
