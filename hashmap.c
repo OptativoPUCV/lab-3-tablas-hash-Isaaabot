@@ -89,14 +89,13 @@ c) Asigne a map->buckets un nuevo arreglo con la nueva capacidad.
 d) Inicialice size a 0.
 e) Inserte los elementos del arreglo old_buckets en el mapa (use la función insertMap que ya implementó).
 */
-/*
+
 void enlarge(HashMap * map) 
 {
     enlarge_called = 1 ; //no borrar (testing purposes)
 
 
 }
-*/
 
 /*
 1.- Implemente la función createMap en el archivo hashmap.c. Esta función crea una variable de 
@@ -135,13 +134,13 @@ HashMap * createMap(long capacity)
 la clave key. Para hacerlo debe buscar el dato y luego marcarlo para que no sea válido. No elimine el par, sólo 
 invalídelo asignando NULL a la clave (pair->key=NULL). Recuerde actualizar la variable size.
 */
-/*
+
 void eraseMap(HashMap * map,  char * key) 
 {    
 
-    return NULL ;
+    return ;
 }
-*/
+
 /*
 3.- Implemente la función Pair * searchMap(HashMap * map, char * key), la cual retorna el Pair asociado 
 a la clave ingresada. Recuerde que para buscar el par debe:
@@ -185,7 +184,7 @@ Pair * searchMap(HashMap * map,  char * key)
 válido del arreglo buckets. Pair * nextMap(HashMap * map) retorna el siguiente Pair del arreglo buckets a partir 
 índice current. Recuerde actualizar el índice.
 */
-/*
+
 Pair * firstMap(HashMap * map) 
 {
 
@@ -197,4 +196,3 @@ Pair * nextMap(HashMap * map)
 
     return NULL ;
 }
-*/
