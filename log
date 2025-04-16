@@ -34,3 +34,24 @@ hashmap.c:136:6: note: declared here
       ^~~~~~~~
 cc1.exe: all warnings being treated as errors
 5e2e0cc
+Wed, Apr 16, 2025  4:56:22 PM: 
+ hashmap.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+Compilation failed
+C:\Users\isabo\AppData\Local\Temp\cc4MgUWE.o: In function `erase_test1':
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:292: undefined reference to `eraseMap'
+C:\Users\isabo\AppData\Local\Temp\cc4MgUWE.o: In function `erase_test2':
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:320: undefined reference to `eraseMap'
+C:\Users\isabo\AppData\Local\Temp\cc4MgUWE.o: In function `erase_test3':
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:333: undefined reference to `eraseMap'
+C:\Users\isabo\AppData\Local\Temp\cc4MgUWE.o: In function `first_test':
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:349: undefined reference to `firstMap'
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:371: undefined reference to `firstMap'
+C:\Users\isabo\AppData\Local\Temp\cc4MgUWE.o: In function `next_test':
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:394: undefined reference to `nextMap'
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:407: undefined reference to `nextMap'
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:416: undefined reference to `nextMap'
+C:\Users\isabo\AppData\Local\Temp\cc4MgUWE.o: In function `enlarge_test':
+C:\Users\isabo\OneDrive\Escritorio\LAB_3\lab-3-tablas-hash-Isaaabot/test.c:433: undefined reference to `enlarge'
+collect2.exe: error: ld returned 1 exit status
+b01eb33
