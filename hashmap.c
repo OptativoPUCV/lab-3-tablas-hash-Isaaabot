@@ -51,9 +51,6 @@ c) Ingrese el par en la casilla que encontró.
 */
 void insertMap(HashMap *map, char *key, void *value)
 {
-    //if (map == NULL || key == NULL) // Verificacion para saber que no son NULL
-        //return ;
-    
     long indice = hash(key, map->capacity) ;
     long indice_original = indice ;
     int flag = 1 ; // Flag para saber si ya a salido del bucle
@@ -137,11 +134,15 @@ HashMap *createMap(long capacity)
 la clave key. Para hacerlo debe buscar el dato y luego marcarlo para que no sea válido. No elimine el par, sólo 
 invalídelo asignando NULL a la clave (pair->key=NULL). Recuerde actualizar la variable size.
 */
-
-void eraseMap(HashMap * map,  char * key) 
+void eraseMap(HashMap *map,  char *key) 
 {    
-
-    return ;
+    Pair *par_buscado = searchMap(map, key) ;
+    
+    if (par_buscado != NULL)
+    {
+        par_buscado->key == NULL ;
+        (map->size)-- ;
+    }
 }
 
 /*
@@ -155,9 +156,6 @@ c) Si llega a una casilla nula, retorne NULL inmediatamente (no siga avanzando, 
 */
 Pair *searchMap(HashMap *map,  char *key) 
 {   
-    //if (map == NULL || key == NULL) 
-        //return 0 ;
-    
     long indice = hash(key, map->capacity) ;
     long indice_original = indice ;
     int flag = 1 ;
