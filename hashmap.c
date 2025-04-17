@@ -191,7 +191,7 @@ Pair *firstMap(HashMap *map)
     {
         if (map->buckets[k] != NULL && map->buckets[k]->key != NULL) // Si la posicion y la llave son distintos de NULL
         {
-            map->current = k ; 
+            //map->current = k ; 
             return map->buckets[k] ; // se retorna
         }
     }
@@ -201,11 +201,11 @@ Pair *firstMap(HashMap *map)
 
 Pair *nextMap(HashMap *map) 
 {
-    for (long k = map->current + 1 ; k < map->capacity ; k++) // Se recorre la estructura
+    for (long k = map->current + 1 ; k < map->capacity ; k++) // Se recorre la estructura desde el map->current
     {
         if (map->buckets[k] != NULL && map->buckets[k]->key != NULL) // Si la posicion y la llave son distintos de NULL
         {
-            map->current = k ; 
+            //map->current = k ; 
             return map->buckets[k] ; // se retorna
         }
     }
