@@ -92,8 +92,30 @@ e) Inserte los elementos del arreglo old_buckets en el mapa (use la función ins
 void enlarge(HashMap * map) 
 {
     enlarge_called = 1 ; //no borrar (testing purposes)
+    Pair **old_buckets = map->buckets ;
+    map->capacity *= 2 ;
+    map->buckets = (Pair **) malloc(sizeof(Pair *) * map->capacity) ;
 
+    if (map->buckets == NULL)
+        exit(EXIT_FAILURE) ;
+    
+    for (long k = 0 ; k < map->capacity ; k++)
+    {
+        map->buckets[k] = NULL ;
+    }
 
+    map->size = 0 ;
+
+    for (long k = 0 ; k < map->capacity / 2 ; k++)
+    {
+        if (old_buckets[k] != NULL && old_buckets[k]->key != NULL)
+        {
+            insertMap(map, old_buckets[k]->key, old_buckets[k]->value) ;
+            free(old_buckets[k]) ;
+        }
+        
+    }
+    free(old_buckets) ;
 }
 
 /*
@@ -191,11 +213,10 @@ Pair *firstMap(HashMap *map)
     {
         if (map->buckets[k] != NULL && map->buckets[k]->key != NULL) // Si la posicion y la llave son distintos de NULL
         {
-            //map->current = k ; 
-            return map->buckets[k] ; // se retorna
+            map->current = k ; // Actualizamos el current
+            return map->buckets[k] ; // Se retorna el primer par
         }
     }
-    
     return NULL ;
 }
 
@@ -205,10 +226,9 @@ Pair *nextMap(HashMap *map)
     {
         if (map->buckets[k] != NULL && map->buckets[k]->key != NULL) // Si la posicion y la llave son distintos de NULL
         {
-            //map->current = k ; 
-            return map->buckets[k] ; // se retorna
+            map->current = k ; // Actualizamos el current
+            return map->buckets[k] ; // Se retorna el siguiente par
         }
     }
-
     return NULL ;
 }
