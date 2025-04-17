@@ -140,7 +140,7 @@ void eraseMap(HashMap *map,  char *key)
     
     if (par_buscado != NULL)
     {
-        par_buscado->key == NULL ;
+        par_buscado->key = NULL ;
         (map->size)-- ;
     }
 }
