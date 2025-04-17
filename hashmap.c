@@ -136,12 +136,12 @@ invalídelo asignando NULL a la clave (pair->key=NULL). Recuerde actualizar la v
 */
 void eraseMap(HashMap *map,  char *key) 
 {    
-    Pair *par_buscado = searchMap(map, key) ;
+    Pair *par_buscado = searchMap(map, key) ; // Buscamos el par con función searchMap
     
-    if (par_buscado != NULL)
+    if (par_buscado != NULL) // Si no es NULL quiere decir que existe
     {
-        par_buscado->key = NULL ;
-        (map->size)-- ;
+        par_buscado->key = NULL ; // Invalidamos par
+        (map->size)-- ; // Disminuimos en 1 la talla
     }
 }
 
@@ -185,15 +185,30 @@ Pair *searchMap(HashMap *map,  char *key)
 válido del arreglo buckets. Pair * nextMap(HashMap * map) retorna el siguiente Pair del arreglo buckets a partir 
 índice current. Recuerde actualizar el índice.
 */
-
-Pair * firstMap(HashMap * map) 
+Pair *firstMap(HashMap *map) 
 {
-
+    for (long k = 0 ; k < map->capacity ; k++) // Se recorre la estructura
+    {
+        if (map->buckets[k] != NULL && map->buckets[k]->key != NULL) // Si la posicion y la llave son distintos de NULL
+        {
+            map->current = k ; 
+            return map->buckets[k] ; // se retorna
+        }
+    }
+    
     return NULL ;
 }
 
-Pair * nextMap(HashMap * map) 
+Pair *nextMap(HashMap *map) 
 {
+    for (long k = map->current + 1 ; k < map->capacity ; k++) // Se recorre la estructura
+    {
+        if (map->buckets[k] != NULL && map->buckets[k]->key != NULL) // Si la posicion y la llave son distintos de NULL
+        {
+            map->current = k ; 
+            return map->buckets[k] ; // se retorna
+        }
+    }
 
     return NULL ;
 }
