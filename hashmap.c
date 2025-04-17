@@ -49,14 +49,14 @@ Una casilla disponible es una casilla nula, pero también una que tenga un par i
 c) Ingrese el par en la casilla que encontró.
 - No inserte claves repetidas. Recuerde que el arreglo es circular. Recuerde actualizar la variable size.
 */
-void insertMap(HashMap * map, char * key, void * value) 
+void insertMap(HashMap *map, char *key, void *value)
 {
-    if (map == NULL || key == NULL)
-        return ;
+    //if (map == NULL || key == NULL) // Verificacion para saber que no son NULL
+        //return ;
     
     long indice = hash(key, map->capacity) ;
     long indice_original = indice ;
-    int first = 1 ;
+    int flag = 1 ; // Flag para saber si ya a salido del bucle
 
     while (map->buckets[indice] != NULL && map->buckets[indice]->key != NULL) // Buscamos una casilla disponible
     {
@@ -65,13 +65,15 @@ void insertMap(HashMap * map, char * key, void * value)
         
         indice = (indice + 1) % map->capacity ;
 
-        if (!first && indice == indice_original) // Si damos la vuelta, salimos
+        if (!flag && indice == indice_original) // Si damos la vuelta, salimos
             break ;
         
-        first = 0 ;
+        flag = 0 ;
     }
     
-    Pair *nuevo_par = createPair(key, value) ;
+    Pair *nuevo_par = createPair(key, value) ; // Creamos un nuevo par
+
+    // Insertamos en la posición encontrada
     map->buckets[indice] = nuevo_par ;
     map->current = indice ;
     (map->size)++ ;
@@ -102,30 +104,31 @@ void enlarge(HashMap * map)
 tipo HashMap, inicializa el arreglo de buckets con casillas nulas, inicializa el resto de variables 
 y retorna el mapa. Inicialice el índice current a -1.
 */
-HashMap * createMap(long capacity) 
+HashMap *createMap(long capacity)
 {
-    HashMap *nuevo_mapa = (HashMap*) malloc(sizeof(HashMap)) ;
+    HashMap *nuevo_mapa = (HashMap *) malloc(sizeof(HashMap)) ; // Reservamos memoria para el HashMap
 
     if (nuevo_mapa == NULL)
         exit(EXIT_FAILURE) ;
 
-    nuevo_mapa->buckets = (Pair**) malloc(sizeof(Pair *) * capacity) ;
-
+    nuevo_mapa->buckets = (Pair **) malloc(sizeof(Pair *) * capacity) ; // Reservamos memoria para los buckets
+    
     if (nuevo_mapa->buckets == NULL)
     {
         free(nuevo_mapa) ; // Liberar memoria en caso de que falle la reserva de buckets
-        return NULL ;
+        exit(EXIT_FAILURE) ;
     }
-    
-    for (long k = 0 ; k < capacity ; k++)
+
+    for (long k = 0 ; k < capacity ; k++) // Inicializamos las casillas en NULL
     {
         nuevo_mapa->buckets[k] = NULL ;
     }
-
+    
+    // Inicializamos el resto de variables 
     nuevo_mapa->size = 0 ;
     nuevo_mapa->capacity = capacity ;
     nuevo_mapa->current = -1 ;
-
+    
     return nuevo_mapa ;
 }
 
@@ -150,14 +153,14 @@ b) Si la clave no se encuentra avance hasta encontrarla (método de resolución 
 c) Si llega a una casilla nula, retorne NULL inmediatamente (no siga avanzando, la clave no está)
 - Recuerde actualizar el índice current a la posición encontrada. Recuerde que el arreglo es circular.
 */
-Pair * searchMap(HashMap * map,  char * key) 
+Pair *searchMap(HashMap *map,  char *key) 
 {   
-    if (map == NULL || key == NULL)
-        return 0 ;
+    //if (map == NULL || key == NULL) 
+        //return 0 ;
     
     long indice = hash(key, map->capacity) ;
     long indice_original = indice ;
-    int first = 1 ;
+    int flag = 1 ;
 
     while (map->buckets[indice] != NULL)
     {
@@ -171,10 +174,10 @@ Pair * searchMap(HashMap * map,  char * key)
         }
         indice = (indice + 1) % map->capacity ; // Siguiente posición
 
-        if (!first && indice == indice_original) // Para evitar bucle infinito
+        if (!flag && indice == indice_original) // Para evitar bucle infinito
             break ;
 
-        first = 0 ;
+        flag = 0 ;
     }
     return NULL ; // No se encontró
 }
